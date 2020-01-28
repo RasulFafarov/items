@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract class Pack extends Item {
     List<Item> inPack = new ArrayList<Item>();
-    ;
+
 
     abstract public void addItem(Item item);
 
@@ -24,6 +24,7 @@ public abstract class Pack extends Item {
     @Override
     public void print() {
         super.print();
+        System.out.println("Предметы находящиеся внутри: ");
         for (Item item :inPack){
             System.out.println(item.getName());
         }

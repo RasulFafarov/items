@@ -26,19 +26,28 @@ public class Stack extends Pack {
     }
 
      public void addItem(Item item){
-        if (this.maxItems == null) {
+
+         if (this.maxItems == null) {
              throw new IllegalArgumentException("Неизвестно максимальное количество предметов в стопке");
         }
-        else if (item.getFlateFlag() != true){
+        else if (item.getFlatFlag() != true){
              throw new IllegalArgumentException("Нельзя положить не плоский предмет в стопку");
         }
-         if (super.inPack.size() >= maxItems){
+        else if (super.inPack.size() >= maxItems){
              throw new IllegalArgumentException("Слишком много предметов в стопке");
          }
         else {
-             super.setFlateFlag(true);
+
+             super.setPlacedFlag(true);
              super.inPack.add(item);
          }
+    }
+
+    @Override
+    public void print() {
+        super.print();
+        System.out.println("Максимальное количество:" + maxItems);
+
     }
 }
 

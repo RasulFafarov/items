@@ -2,7 +2,7 @@ public class Item {
 
     private String name;
     private Double weight;
-    private Boolean flateFlag;
+    private Boolean flatFlag;
     private Boolean placedFlag = false;
     private Double height;//высота
     private Double width;//ширина
@@ -12,10 +12,10 @@ public class Item {
         this.name = name;
     }
 
-    public Item(String name, Double weight, Boolean flateFlag, Double height, Double width, Double length) {
+    public Item(String name, Double weight, Boolean flatFlag, Double height, Double width, Double length) {
         this.name = name;
         this.weight = weight;
-        this.flateFlag = flateFlag;
+        this.flatFlag = flatFlag;
         this.height = height;
         this.width = width;
         this.length = length;
@@ -51,12 +51,12 @@ public class Item {
     }
 
 
-    public Boolean getFlateFlag() {
-        return flateFlag;
+    public Boolean getFlatFlag() {
+        return flatFlag;
     }
 
-    public void setFlateFlag(Boolean flateFlag) {
-        this.flateFlag = flateFlag;
+    public void setFlatFlag(Boolean flatFlag) {
+        this.flatFlag = flatFlag;
     }
 
     public Double getHeight() {
@@ -89,7 +89,7 @@ public class Item {
     public void print() {
         System.out.println("Имя: " + name);
         System.out.println("Вес: " + weight);
-        System.out.println("Предмет плоской: " + flateFlag);
+        System.out.println("Предмет плоской: " + flatFlag);
         System.out.println("Высота: " + height);
         System.out.println("Ширина: " + width);
         System.out.println("Длина: " + length);

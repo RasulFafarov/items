@@ -4,6 +4,15 @@ public class Bag extends Pack {
     private Double maxWeight;
     private Double freeWeight;
 
+    public void setMaxWeight(Double maxWeight) {
+        this.maxWeight = maxWeight;
+    }
+
+    public Double getFreeWeight() {
+        return freeWeight;
+    }
+
+
     public Bag(double maxWeight) {
         this.freeWeight = maxWeight;
     }
@@ -15,9 +24,6 @@ public class Bag extends Pack {
         return maxWeight;
     }
 
-    public void setMaxWeight(double maxWeight) {
-        this.maxWeight = maxWeight;
-    }
     public Item getItem(){
         Random randNumber = new Random();
         int iNumber = randNumber.nextInt(super.inPack.size()-1);
@@ -25,11 +31,13 @@ public class Bag extends Pack {
     }
 
     public Item getItem(String name){
+        for (Item item :inPack) {
+            if (item.getName() == name){
+                return item;
 
-        // не сделано
-        Item item = super.inPack.get(super.inPack.size()-1);
-        super.inPack.remove(super.inPack.size()-1);
-        return item;
+            }
+        }
+        throw new IllegalArgumentException("Предмета с таким именем не найден");
     }
 
     public void addItem(Item item){
