@@ -5,6 +5,7 @@ public class Bag extends Pack {
     private Double freeWeight;
 
     public void setMaxWeight(Double maxWeight) {
+        super.check(maxWeight);
         this.maxWeight = maxWeight;
     }
 
@@ -14,6 +15,7 @@ public class Bag extends Pack {
 
 
     public Bag(double maxWeight) {
+        super.check(maxWeight);
         this.freeWeight = maxWeight;
     }
 

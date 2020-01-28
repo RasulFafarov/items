@@ -11,7 +11,6 @@ public class Stack extends Pack {
     }
 
     public Stack(Integer max){
-
         this.maxItems = max;
 
     }

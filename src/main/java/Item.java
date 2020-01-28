@@ -11,13 +11,21 @@ public class Item {
     public Item(String name) {
         this.name = name;
     }
-
+    protected void check(Double n){
+        if (n<=0) {
+            throw new IllegalArgumentException("предмет не может иметь не положительное хначение характеристик");
+        }
+        }
     public Item(String name, Double weight, Boolean flatFlag, Double height, Double width, Double length) {
         this.name = name;
+        check(weight);
         this.weight = weight;
         this.flatFlag = flatFlag;
+        check(height);
         this.height = height;
+        check(width);
         this.width = width;
+        check(length);
         this.length = length;
     }
 
@@ -47,6 +55,8 @@ public class Item {
     }
 
     public void setWeight(Double weight) {
+        check(weight);
+
         this.weight = weight;
     }
 
@@ -64,6 +74,7 @@ public class Item {
     }
 
     public void setHeight(Double height) {
+        check(height);
         this.height = height;
     }
 
@@ -73,6 +84,7 @@ public class Item {
     }
 
     public void setWidth(Double width) {
+        check(width);
         this.width = width;
     }
 
@@ -83,6 +95,7 @@ public class Item {
     }
 
     public void setLength(Double length) {
+        check(length);
         this.length = length;
     }
 
