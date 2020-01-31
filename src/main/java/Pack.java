@@ -1,18 +1,49 @@
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+/**
+ * вспомогательный класс хранилище.
+ */
 public abstract class Pack extends Item {
-    List<Item> inPack = new ArrayList<Item>();
+    /**
+     * хранимаые внутри предметы.
+     */
+    protected List<Item> inPack = new ArrayList<Item>();
 
 
-    abstract public void addItem(Item item);
+    /**
+     * обрабатывает дополнительные действия при помещении предмета.
+     * @param item помещаемый предмет
+     * @throws ItemException обработка ошибок
+     */
+    protected final void addItems(final Item item) throws ItemException {
+        super.setPlacedFlag(true);
+        inPack.add(item);
+        super.setWeight(super.getWeight() + item.getWeight());
+    };
 
-    abstract public Item getItem();
+    /**
+     * добавление предмета внутрь.
+     * @param item помещаемый предмет
+     * @throws ItemException обработка ошибок
+     */
+    abstract public void addItem(final Item item) throws ItemException;
 
-    protected Item removeAndGetItems(int i) {
+    /**
+     * @return предмет из коллекции
+     * @throws ItemException обработка ошибок
+     */
+    abstract public Item getItem() throws ItemException;
+
+    /**
+     * достает предмет из коллекции с указанным индексом.
+     * @param i номер предмета в коллекции
+     * @return предмет из коллекции
+     * @throws ItemException обработка ошибок
+     */
+    protected final Item removeAndGetItems(int i) throws ItemException {
         if (i >= this.inPack.size() || i < 0) {
-            throw new IllegalArgumentException("Элемент с таким индексом не существует в контейнере");
+            throw new ItemException("Элемент с таким индексом не существует в контейнере");
         }
         Item item = this.inPack.get(i);
         this.inPack.remove(i);
@@ -21,12 +52,13 @@ public abstract class Pack extends Item {
     }
 
 
+    /**
+     * печать информации об объекте.
+     */
     @Override
     public void print() {
         super.print();
         System.out.println("Предметы находящиеся внутри: ");
-        for (Item item :inPack){
-            System.out.println(item.getName());
-        }
+        inPack.stream().forEach(x -> System.out.println(x.getName()));
     }
 }
