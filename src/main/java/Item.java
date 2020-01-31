@@ -1,104 +1,204 @@
+/**
+ *  Основной класс предмет.
+ */
 public class Item {
 
+    /**
+     * Имя предмета.
+     */
     private String name;
+    /**
+     * Вес предмета.
+     */
     private Double weight;
+    /**
+     * Плоский ли предмет.
+     */
     private Boolean flatFlag;
+    /**
+     * Находится ли предмет в контейнере.
+     */
     private Boolean placedFlag = false;
-    private Double height;//высота
-    private Double width;//ширина
+    /**
+     * Высота предмета.
+     */
+    private Double height;
+    /**
+     * ширина предмета.
+     */
+    private Double width;
+    /**
+     * длина предмета.
+     */
     private Double length;
 
-    public Item(String name) {
-        this.name = name;
-    }
-    protected void check(Double n){
-        if (n<=0) {
-            throw new IllegalArgumentException("предмет не может иметь не положительное хначение характеристик");
-        }
-        }
-    public Item(String name, Double weight, Boolean flatFlag, Double height, Double width, Double length) {
-        this.name = name;
-        check(weight);
-        this.weight = weight;
-        this.flatFlag = flatFlag;
-        check(height);
-        this.height = height;
-        check(width);
-        this.width = width;
-        check(length);
-        this.length = length;
+    /**
+     * @param nameParam имя
+     */
+    public Item(final String nameParam) {
+        this.name = nameParam;
     }
 
+    /**
+     * проверяет число на положительность.
+     * @param n проверяемое число
+     * @throws ItemException обработка ошибок
+     */
+    protected final void check(final Double n) throws ItemException {
+        if (n <= 0) {
+            throw new ItemException("Предмет не может иметь не положительное значение характеристик");
+        }
+        }
+
+    /**
+     * @param nameParam  Имя предмета.
+     * @param weightParam вес предмета.
+     * @param flatFlagParam плоский ли предмет
+     * @param heightParam высота предмета.
+     * @param widthParam ширина предмета.
+     * @param lengthParam длина предмета.
+     * @throws ItemException обработка ошибок
+     */
+    public Item(final String nameParam, final Double weightParam,
+                final Boolean flatFlagParam, final Double heightParam,
+                final Double widthParam, final Double lengthParam) throws ItemException {
+        this.name = nameParam;
+        check(weightParam);
+        this.weight = weightParam;
+        this.flatFlag = flatFlagParam;
+        check(heightParam);
+        this.height = heightParam;
+        check(widthParam);
+        this.width = widthParam;
+        check(lengthParam);
+        this.length = lengthParam;
+    }
+
+    /**
+     *
+     */
     public Item() {
     }
 
 
-    public Boolean getPlacedFlag() {
+    /**
+     * @return плоский ли предмет
+     */
+    public final Boolean getPlacedFlag() {
         return placedFlag;
     }
 
-    public void setPlacedFlag(Boolean placedFlag) {
-         this.placedFlag = placedFlag;
+    /**
+     * @param placedFlagParam плоский ли предмет
+     */
+    public final void setPlacedFlag(final Boolean placedFlagParam) {
+         this.placedFlag = placedFlagParam;
     }
 
-    public String getName() {
+    /**
+     * @return возвращает имя предмета
+     */
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    /**
+     * задает имя предмета.
+     * @param nameParam имя предмета
+     */
+    public final void setName(final String nameParam) {
+        this.name = nameParam;
     }
 
 
-    public Double getWeight() {
+    /**
+     * @return вес предмета
+     */
+    public final Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
-        check(weight);
-
-        this.weight = weight;
+    /**
+     * @param weightParam ширина предмета
+     * @throws ItemException обработка ошибок
+     */
+    public final void setWeight(final Double weightParam)
+            throws ItemException {
+        check(weightParam);
+        this.weight = weightParam;
     }
 
 
-    public Boolean getFlatFlag() {
+    /**
+     * @return плоский ли предмет
+     */
+    public final Boolean getFlatFlag() {
         return flatFlag;
     }
 
-    public void setFlatFlag(Boolean flatFlag) {
-        this.flatFlag = flatFlag;
+    /**
+     * @param flatFlagParam плоский ли предмет
+     */
+    public final void setFlatFlag(final Boolean flatFlagParam) {
+        this.flatFlag = flatFlagParam;
     }
 
-    public Double getHeight() {
+    /**
+     * @return высота предмета
+     */
+    public final Double getHeight() {
         return height;
     }
 
-    public void setHeight(Double height) {
-        check(height);
-        this.height = height;
+    /**
+     * @param heightParam Высота предмета
+     * @throws ItemException обработка ошибок
+     */
+    public final void setHeight(final Double heightParam)
+            throws ItemException {
+        check(heightParam);
+        this.height = heightParam;
     }
 
 
-    public Double getWidth() {
+    /**
+     * @return ширина предмета
+     */
+    public final Double getWidth() {
         return width;
     }
 
-    public void setWidth(Double width) {
-        check(width);
-        this.width = width;
+    /**
+     * @param widthParam ширина предмета
+     * @throws ItemException обработка ошибок
+     */
+    public final void setWidth(final Double widthParam)
+            throws ItemException {
+        check(widthParam);
+        this.width = widthParam;
     }
 
 
-
-    public Double getLength() {
+    /**
+     * @return длина предмета
+     */
+    public final Double getLength() {
         return length;
     }
 
-    public void setLength(Double length) {
-        check(length);
-        this.length = length;
+    /**
+     * @param lengthParam длина предмета
+     * @throws ItemException обработка ошибок
+     */
+    public final void setLength(final Double lengthParam)
+            throws ItemException {
+        check(lengthParam);
+        this.length = lengthParam;
     }
 
+    /**
+     * Печать информации об объекте.
+     */
     public void print() {
         System.out.println("Имя: " + name);
         System.out.println("Вес: " + weight);
